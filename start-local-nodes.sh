@@ -71,8 +71,8 @@ cp ./nodes/node0/config/genesis.json ./nodes/node1/config/genesis.json
 docker stop example-starter-0
 docker stop example-starter-1
 
-sh docker/run-node.sh 0 ./nodes/node0 1001
-sh docker/run-node.sh 1 ./nodes/node1 1051
+sh docker/run-node.sh 0 ./nodes/node0 0
+sh docker/run-node.sh 1 ./nodes/node1 100
 
 echo "Both nodes started."
 
