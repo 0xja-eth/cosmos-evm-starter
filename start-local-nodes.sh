@@ -43,7 +43,9 @@ curl -X POST http://localhost:8180/run/init
 
 echo "Allocating genesis accounts ..."
 curl -X POST http://localhost:8080/run/allocate
-curl -X POST http://localhost:8180/run/allocate
+#curl -X POST http://localhost:8180/run/allocate
+
+cp ./nodes/node0/config/genesis.json ./nodes/node1/config/genesis.json
 
 echo "Generating txs ..."
 curl -X POST http://localhost:8080/run/gentx
@@ -55,8 +57,6 @@ cp ./nodes/node1/config/gentx/* ./nodes/node0/config/gentx/
 
 curl -X POST http://localhost:8080/run/collect
 
-cp ./nodes/node0/config/genesis.json ./nodes/node1/config/genesis.json
-
 NODE0_ID=$(curl -s -X GET http://localhost:8080/run/node | jq -r '.stdout')
 NODE1_ID=$(curl -s -X GET http://localhost:8180/run/node | jq -r '.stdout')
 echo "Node0 ID: $NODE0_ID"
@@ -65,6 +65,8 @@ echo "Node1 ID: $NODE1_ID"
 echo "Adding peers..."
 curl -X POST -H "Content-Type: application/json" -d '{"args":["add","'$NODE1_ID'","example-node-1","26656"]}' http://localhost:8080/run/peers
 curl -X POST -H "Content-Type: application/json" -d '{"args":["add","'$NODE0_ID'","example-node-0","26656"]}' http://localhost:8180/run/peers
+
+cp ./nodes/node0/config/genesis.json ./nodes/node1/config/genesis.json
 
 docker stop example-starter-0
 docker stop example-starter-1

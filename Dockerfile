@@ -26,6 +26,9 @@ COPY . .
 RUN chmod +x scripts -R
 RUN scripts/install.sh
 
+#RUN git clone https://github.com/0xja-eth/example_evm_chain
+#RUN cd example_evm_chain && make install
+
 # Build Go HTTP API server
 RUN go build -o node-api main.go
 
