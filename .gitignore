@@ -1,0 +1,47 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+# Dependency directories
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+
+# Build output
+node-api
+*.exe
+*.out
+*.log
+*.tmp
+*.test
+*.coverprofile
+coverage/
+
+# Environment files
+.env
+.env.*
+
+# Archives
+*.tar
+*.gz
+*.zip
+*.tgz
+*.tar.gz
+
+# Documentation and local config
+openapi.yaml
+docs/
+*.md
+!README.md
+
+nodes
+config/nodes.json

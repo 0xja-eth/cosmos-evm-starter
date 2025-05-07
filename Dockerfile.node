@@ -1,0 +1,33 @@
+# FROM example-starter:latest as builder
+#
+# FROM golang:1.23.8-bullseye
+# RUN apt-get update && apt-get install -y jq curl
+#
+# Copy from starter
+# COPY --from=builder /root/go/bin/evmd /usr/local/bin/evmd
+#
+# EXPOSE 26656 26657 8545 8546 1317
+# WORKDIR /root
+#
+# ENTRYPOINT ["/usr/local/bin/evmd"]
+# CMD [
+#   "start",
+#   "--log_level", "info",
+#   "--minimum-gas-prices=0.0001utest",
+#   "--home", "/root/.evmd",
+#   "--json-rpc.api", "eth,net,web3",
+#   "--chain-id", "cosmos_262144-1"
+# ]
+
+FROM example-starter:latest AS builder
+
+FROM golang:1.23.8-bullseye
+# RUN apt-get update && apt-get install -y jq curl
+
+COPY --from=builder /go/bin/evmd /usr/local/bin/evmd
+
+EXPOSE 26656 26657 8545 8546 1317
+WORKDIR /root
+
+ENTRYPOINT ["/usr/local/bin/evmd"]
+CMD ["start", "--log_level", "info", "--minimum-gas-prices=0.0001utest", "--home", "/root/.evmd", "--json-rpc.api", "eth,net,web3", "--chain-id", "cosmos_262144-1"]

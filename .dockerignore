@@ -1,0 +1,48 @@
+# Ignore version control
+.git
+.gitignore
+
+# Ignore editor/project files
+*.swp
+*.swo
+*.idea/
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+node-api
+*.exe
+*.out
+*.log
+*.tmp
+
+# Ignore dependency/package caches
+node_modules/
+__pycache__/
+*.pyc
+vendor/
+
+# Ignore test and coverage
+coverage/
+*.test
+*.coverprofile
+
+# Ignore docs and local config
+*.md
+docs/
+openapi.yaml
+.env
+.env.*
+
+# Ignore archives
+*.tar
+*.gz
+*.zip
+*.tgz
+*.tar.gz
+
+docker
+nodes
